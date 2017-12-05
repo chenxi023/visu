@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainForm.ui.qml</file>
+        <file>robot.qml</file>
+        <file>delta.jpg</file>
+        <file>scara.jpg</file>
+        <file>six.jpg</file>
+        <file>scara.qml</file>
+        <file>shaders/line.fsh</file>
+        <file>shaders/line.vsh</file>
+        <file>shaders/noisy.fsh</file>
+        <file>shaders/noisy.vsh</file>
+        <file>delta.qml</file>
+        <file>six.qml</file>
+        <file>camera_2D.qml</file>
+        <file>camera_3D.qml</file>
+        <file>main_context.qml</file>
+        <file>start.jpg</file>
+        <file>stop.jpg</file>
+        <file>password.jpg</file>
+        <file>user.jpg</file>
+        <file>camera21.jpg</file>
+        <file>home1.jpg</file>
+        <file>home2.jpg</file>
+        <file>robot1.jpg</file>
+        <file>robot2.jpg</file>
+        <file>camera22.jpg</file>
+        <file>camera31.jpg</file>
+        <file>camera32.jpg</file>
+        <file>light1.jpg</file>
+        <file>light2.jpg</file>
+    </qresource>
+</RCC>
