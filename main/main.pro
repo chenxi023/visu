@@ -6,7 +6,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     graph.cpp \
     gridnode.cpp \
-    linenode.cpp
+    linenode.cpp \
+    qmltest.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +20,5 @@ include(deployment.pri)
 HEADERS += \
     graph.h \
     gridnode.h \
-    linenode.h
+    linenode.h \
+    qmltest.h

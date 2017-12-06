@@ -5,6 +5,7 @@ import QtQml 2.0
 import QtQuick.Dialogs 1.2
 import QtQuick.Controls.Styles 1.3
 import QtGraphicalEffects 1.0
+import an.Qt.QmlTest 1.0
 
 Item {
 
@@ -12,6 +13,9 @@ Item {
         width: 850;
         height: 400;
         anchors.fill: parent;
+        QmlTest {
+            id: demoMaker;
+        }
 
         Component{
             id: btnstyle;
@@ -43,6 +47,7 @@ Item {
                 Button{
                     id:start;
                     //text:"Start";
+                    property var icon;
                     Text{
                         text: "Start"
                         color: "green"
@@ -54,12 +59,17 @@ Item {
                         font.family: "Times"
                         font.pixelSize: 20
                     }
+                    onClicked: {
+                        icon="1";
+                    }
+
                     //iconSource: { source:"qrc:/start.jpg"}
                     //style: btnstyle;
                     }
                 Button{
                     id:stop;
                     //text:"Stop";
+                    property var icon;
                     Text{
                         text: "Stop"
                         color: "red"
@@ -72,6 +82,9 @@ Item {
                         font.pixelSize: 20
                     }
                     //style: btnstyle
+                    onClicked: {
+                        icon="1";
+                    }
                     }
 
                 Button{
@@ -124,6 +137,7 @@ Item {
             anchors.rightMargin: 300;
             spacing: 4;
             Column{
+
                 width: 4;
                 spacing: 10;
                 Text {
@@ -141,10 +155,10 @@ Item {
                     height: 25;
                     border.width: 0;
                     radius: 50;
-                    property var icon: ["qrc:/light1.jpg","qrc:/light2.jpg"]
+                    property var icon: "qrc:/light1.jpg";
                     Image{
                         id:power
-                        source: poweronstate.icon[1];
+                        source: poweronstate.icon;
                     }
                 }
             }
@@ -157,7 +171,7 @@ Item {
                     implicitHeight: 25
                     border.width: control.activeFocus ? 2 : 1
                     border.color: "#888"
-                    radius: 12
+                    radius: 10
                     gradient: Gradient {
                         GradientStop { position: 0 ; color: "white" }
                         GradientStop { position: 0.5 ; color: control.pressed ? "lightgreen" : "lightgray" }
@@ -173,7 +187,7 @@ Item {
                     implicitHeight: 25
                     border.width: control.activeFocus ? 2 : 1
                     border.color: "#888"
-                    radius: 12
+                    radius: 10
                     gradient: Gradient {
                         GradientStop { position: 0 ; color: "white" }
                         GradientStop { position: 0.5 ; color: "lightgreen" }
@@ -194,11 +208,14 @@ Item {
                     id:delta_enable;
                     text:"delta_enable";
                     style: enable_botton;
+                    property var icon;
                     onClicked: {
                         if (delta_enable.style==enable_botton){
                             delta_enable.style=enable_botton_on;
+                            icon="1";
                         }else{
                             delta_enable.style=enable_botton;
+                            icon="0";
                         }
                     }
                     }
@@ -206,11 +223,14 @@ Item {
                     id:six_enable;
                     text:"six_enable";
                     style: enable_botton;
+                    property var icon;
                     onClicked: {
                         if (six_enable.style==enable_botton){
                             six_enable.style=enable_botton_on;
+                            icon="1";
                         }else{
                             six_enable.style=enable_botton;
+                            icon="0";
                         }
                     }
                     }
@@ -218,17 +238,54 @@ Item {
                     id:scara_enable;
                     text:"scara_enable";
                     style: enable_botton;
+                    property var icon;
                     onClicked: {
                         if (scara_enable.style==enable_botton){
                             scara_enable.style=enable_botton_on;
+                            icon="1";
                         }else{
                             scara_enable.style=enable_botton;
+                            icon="0";
                         }
                     }
                     }
 
             }
         }
+        Connections {
+            target: demoMaker;
+            onCurrentData_main_context:{
+                //console.log("data:",data1);
+                warning.text = data1;
+                states.text = data2;
+                if(data3=="0"){
+                    poweronstate.icon="qrc:/light1.jpg";
+                }else if(data3=="1"){
+                    poweronstate.icon="qrc:/light2.jpg";
+                }
+                data4=belt_1_siler.value;
+                data5=belt_2_siler.value;
+                data6=delta_siler.value;
+                data7=six_siler.value;
+                data8=scara_siler.value;
+                data9=start.icon;
+                data10=stop.icon;
+                data11=delta_enable.icon;
+                data12=six_enable.icon;
+                data13=scara_enable.icon;
+            }
+        }
+        Timer {
+            id: timer
+            interval: 500
+            repeat: true
+            running: true
+            onTriggered: {
+                demoMaker.send_main_context();
+                //console.log("send_main_context");
+                }
+            }
+
 
 
         Component{

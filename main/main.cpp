@@ -5,6 +5,7 @@
 #include <QObject>
 #include "graph.h"
 #include <QtQml/QQmlContext>
+#include "qmltest.h"
 
 
 int main(int argc, char *argv[])
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
 //    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     qmlRegisterType<Graph>("Graph", 1, 0, "Graph");
+    qmlRegisterType<QmlTest>("an.Qt.QmlTest",1,0,"QmlTest");
 
     QQuickView view;//从QQuickWindow继承来的，搭配item，对窗口的控制权在c++代码里面
     view.resize(850, 400);

@@ -7,6 +7,7 @@ import QtQuick.Dialogs 1.2
 import Graph 1.0
 import QtQuick.Controls.Styles 1.3
 //import QtQuick.Dialogs 1.1
+import an.Qt.QmlTest 1.0
 
 
 Rectangle{
@@ -65,7 +66,7 @@ Rectangle{
                 anchors.verticalCenterOffset: -60
                 sourceComponent: component
                 onLoaded: {
-                    //item.placeHoldText = "用户名"
+                    item.text = "robot"
                     item.source = "qrc:/user.jpg"
                     item.echomode = TextInput.Normal
 
@@ -79,7 +80,7 @@ Rectangle{
                 sourceComponent: component
 
                 onLoaded: {
-                    //item.placeHoldText = "......"
+                    item.text = "123"
                     item.source = "qrc:/password.jpg"
                     item.echomode = TextInput.Password
 
