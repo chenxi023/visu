@@ -6,6 +6,7 @@
 #include "graph.h"
 #include <QtQml/QQmlContext>
 #include "qmltest.h"
+//#include "myopc.h"
 
 
 int main(int argc, char *argv[])

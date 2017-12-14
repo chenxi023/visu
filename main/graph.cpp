@@ -111,8 +111,17 @@ QSGNode *Graph::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
         }else if(m_obj==1){
             linecolor="lightgreen";
         }else if(m_obj==2){
-            linecolor="red";
+            linecolor="black";
+        }else if(m_obj==3){
+            linecolor="yellow";
+        }else if(m_obj==4){
+            linecolor="orange";
+        }else if(m_obj==5){
+            linecolor="purple";
+        }else if(m_obj==6){
+            linecolor="gray";
         }
+
         n->line = new LineNode(10, 0.5, linecolor);//QColor("steelblue"),steelblue
         n->shadow = new LineNode(20, 0.2, QColor::fromRgbF(0.2, 0.2, 0.2, 0.4));
 
